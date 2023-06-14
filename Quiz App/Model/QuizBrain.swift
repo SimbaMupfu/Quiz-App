@@ -14,9 +14,11 @@ struct QuizBrain{
         QuizQuestion(text: "Three + Eight is less than Ten", answer: "False")
     ]
     var questionNumber = 0
+    var score = 0
     
-    func checkAnswer(_ userAnswer: String) -> Bool {
+    mutating func checkAnswer(_ userAnswer: String) -> Bool {
         if userAnswer == quizQuestions[questionNumber].answer {
+            score += 1
             return true
         }else{
             return false
@@ -37,5 +39,9 @@ struct QuizBrain{
         }else{
             questionNumber = 0
         }
+    }
+    
+    func getScore() -> Int {
+        return score
     }
 }
